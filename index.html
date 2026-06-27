@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>GYM MAX - Salle de sport Ben Arous</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="GYM MAX, salle de sport à Ben Arous. Cours collectifs, kids, self-défense, fitness et plus." />
+  <style>
+    :root {
+      --bg-dark: #05060a;
+      --bg-card: #11131a;
+      --accent: #EA0101;
+      --accent-soft: #EA0101;
+      --text-main: #f5f5f5;
+      --text-muted: #b0b3c1;
+      --border-soft: #262938;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #151827 0, #05060a 55%);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent-soft);
+      text-decoration: none;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px);
+      background: rgba(5, 6, 10, 0.85);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0.8rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #ff8a65 0, #e53935 40%, #05060a 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+    }
+
+    .logo span {
+      color: var(--text-main);
+    }
+
+    .logo span strong {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.2rem;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 0.2rem;
+      color: var(--text-muted);
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-soft));
+      transition: width 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .btn-primary {
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 600;
+      background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+      color: #fff;
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05),
+                  0 12px 30px rgba(0, 0, 0, 0.6);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.5rem;
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.6fr);
+      gap: 2rem;
+      padding: 2.5rem 0 2rem;
+      align-items: center;
+    }
+
+    .hero-title {
+      font-size: 2.4rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-title span {
+      color: var(--accent);
+    }
+
+    .hero-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      color: var(--text-muted);
+    }
+
+    .badge strong {
+      color: var(--accent-soft);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      align-items: center;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .hero-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .hero-card {
+      background: radial-gradient(circle at top, #1b1f2f 0, #0a0c12 55%);
+      border-radius: 1.2rem;
+      padding: 1.4rem;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.7);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(229, 57, 53, 0.18) 0, transparent 45%),
+        radial-gradient(circle at 90% 100%, rgba(255, 112, 67, 0.18) 0, transparent 45%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .hero-card-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .hero-card-title {
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .hero-card-rating {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.85rem;
+      background: rgba(0, 0, 0, 0.35);
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .hero-card-rating strong {
+      color: #ffd54f;
+    }
+
+    .hero-card-body {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
+      gap: 1rem;
+      font-size: 0.85rem;
+    }
+
+    .hero-card-body h3 {
+      font-size: 0.95rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-card-body p {
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-card-body ul {
+      list-style: none;
+      color: var(--text-muted);
+    }
+
+    .hero-card-body li {
+      margin-bottom: 0.25rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 0.6rem;
+    }
+
+    .hero-card-body li span:first-child {
+      color: var(--text-main);
+    }
+
+    .hero-card-footer {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .hero-card-footer a {
+      font-weight: 500;
+    }
+
+    /* Sections */
+    section {
+      margin: 2.5rem 0;
+    }
+
+    section h2 {
+      font-size: 1.4rem;
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    section h2 span {
+      color: var(--accent);
+    }
+
+    .section-subtitle {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 1.4rem;
+      max-width: 620px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.2fr);
+      gap: 1.6rem;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border-radius: 1rem;
+      padding: 1.2rem;
+      border: 1px solid var(--border-soft);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.6rem;
+    }
+
+    .card-header h3 {
+      font-size: 1rem;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-muted);
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.6rem;
+    }
+
+    .pill {
+      font-size: 0.8rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      color: var(--text-muted);
+    }
+
+    /* Planning */
+    .planning-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 1.2rem;
+    }
+
+    .planning-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+
+    .planning-table thead {
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .planning-table th,
+    .planning-table td {
+      padding: 0.5rem 0.4rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      text-align: left;
+    }
+
+    .planning-table th {
+      font-weight: 600;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+
+    .planning-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .badge-day {
+      font-size: 0.75rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* Avis */
+    .reviews {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 1.4rem;
+    }
+
+    .review-card {
+      background: var(--bg-card);
+      border-radius: 0.9rem;
+      padding: 1rem;
+      border: 1px solid var(--border-soft);
+      margin-bottom: 0.8rem;
+    }
+
+    .review-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.4rem;
+      font-size: 0.9rem;
+    }
+
+    .stars {
+      color: #ffd54f;
+      font-size: 0.85rem;
+    }
+
+    .review-body {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .review-meta {
+      margin-top: 0.4rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.1fr);
+      gap: 1.4rem;
+    }
+
+    .contact-list {
+      list-style: none;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .contact-list li {
+      margin-bottom: 0.5rem;
+      display: flex;
+      gap: 0.6rem;
+    }
+
+    .contact-list span.label {
+      min-width: 90px;
+      color: var(--text-main);
+      font-weight: 500;
+    }
+
+    .map-placeholder {
+      background: radial-gradient(circle at top, #1b1f2f 0, #05060a 55%);
+      border-radius: 1rem;
+      border: 1px solid var(--border-soft);
+      padding: 1rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .map-placeholder strong {
+      color: var(--text-main);
+    }
+
+    .footer {
+      margin-top: 2.5rem;
+      padding: 1.5rem 0 0.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .footer span {
+      opacity: 0.8;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero-card-body {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .grid-2,
+      .planning-grid,
+      .reviews,
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.6rem;
+      }
+      .nav-links {
+        flex-wrap: wrap;
+      }
+      .hero-title {
+        font-size: 2rem;
+      }
+    }
+    /* Logo container */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+/* Round logo image */
+.logo img {
+  width: 50px;          /* adjust size */
+  height: 50px;         /* must match width for a perfect circle */
+  border-radius: 50%;   /* makes it round */
+  object-fit: cover;    /* keeps the image centered and clean */
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 12px rgba(255, 0, 0, 0.35);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect */
+.logo img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 18px rgba(255, 0, 0, 0.55);
+}
+
+/* Responsive */
+@media (max-width: 720px) {
+  .logo img {
+    width: 60px;
+    height: 60px;
+  }
+}
+.map-iframe {
+  width: 100%;
+  height: 320px;
+  border: none;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 0 18px rgba(255, 0, 0, 0.25);
+}
+/* Galerie */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+  margin-top: 1.2rem;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.45);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.04);
+  box-shadow: 0 0 18px rgba(229, 57, 53, 0.45);
+}
+/* Tarifs */
+#tarifs {
+  margin-top: 3rem;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.4rem;
+  margin-top: 1.2rem;
+}
+
+.pricing-card {
+  background: var(--bg-card);
+  padding: 1.4rem;
+  border-radius: 14px;
+  border: 1px solid var(--border-soft);
+  text-align: center;
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.45);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pricing-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 25px rgba(229, 57, 53, 0.35);
+}
+
+.pricing-card.highlight {
+  border: 1px solid rgba(229, 57, 53, 0.6);
+  box-shadow: 0 0 25px rgba(229, 57, 53, 0.45);
+}
+
+.pricing-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.6rem;
+  color: var(--accent);
+}
+
+.price {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.pricing-card ul {
+  list-style: none;
+  margin-bottom: 1.2rem;
+  color: var(--text-muted);
+}
+
+.pricing-card ul li {
+  margin-bottom: 0.4rem;
+  font-size: 0.9rem;
+}
+
+/* Offres spéciales */
+.special-offers {
+  margin-top: 2.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 14px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.special-offers h3 {
+  color: var(--accent);
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.offer-box {
+  margin-bottom: 1.4rem;
+  padding: 1rem;
+  border-left: 3px solid var(--accent);
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
+}
+
+.offer-box h4 {
+  color: var(--text-main);
+  font-size: 1rem;
+  margin-bottom: 0.6rem;
+}
+
+.offer-box ul {
+  list-style: none;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.offer-box ul li {
+  margin-bottom: 0.3rem;
+}
+
+.offer-box strong {
+  color: var(--accent);
+}
+.gallery-video {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.45);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.gallery-video:hover {
+  transform: scale(1.04);
+  box-shadow: 0 0 18px rgba(229, 57, 53, 0.45);
+}
+
+
+
+
+
+
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <div class="logo">
+        <img src="1.png">
+        <span><strong>GYM</strong> MAX</span>
+      </div>
+      <div class="nav-links">
+        <a href="#presentation">Présentation</a>
+        <a href="#planning">Planning</a>
+        <a href="#avis">Avis</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <button class="btn-primary" onclick="scrollToSection('contact')">
+        Demander une offre
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="accueil">
+      <div>
+        <h1 class="hero-title">
+          GYM <span>MAX</span> Ben Arous
+        </h1>
+        <p class="hero-subtitle">
+          Salle de sport moderne à Ben Arous, cours collectifs pour hommes et kids,
+          self-défense, fitness, bootcamp et plus. Obtenez le maximum de vos performances.
+        </p>
+
+        <div class="hero-badges">
+          <div class="badge">
+            ⭐ <strong>5,0 / 5</strong> &nbsp; (2 avis Google)
+          </div>
+          <div class="badge">
+            📍 Rue Naceur Bey, Ben Arous
+          </div>
+          <div class="badge">
+            🕒 Lun–Ven 07h00–22h00 · Sam 07h00–17h00
+          </div>
+        </div>
+
+        <div class="hero-actions">
+          <button class="btn-primary" onclick="scrollToSection('planning')">
+            Voir les cours collectifs
+          </button>
+          <button class="btn-primary" style="background:transparent;border:1px solid rgba(255,255,255,0.15);color:var(--text-main);" onclick="scrollToSection('presentation')">
+            Découvrir la salle
+          </button>
+        </div>
+
+        <div class="hero-meta">
+          <span>💪 Cours hommes & kids</span>
+          <span>🥊 Self-défense, Kung Fu sanda, Mix boxing</span>
+          <span>👨‍👩‍👧‍👦 Kids 5–12 ans</span>
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <div class="hero-card-inner">
+          <div class="hero-card-header">
+            <div class="hero-card-title">Infos rapides</div>
+            <div class="hero-card-rating">
+              ⭐ <strong>5,0</strong> · 2 avis
+            </div>
+          </div>
+          <div class="hero-card-body">
+            <div>
+              <h3>Coordonnées</h3>
+              <p><strong>Adresse :</strong> Rue Naceur Bey, Ben Arous</p>
+              <p><strong>Téléphone :</strong> <a href="tel:+21623480451">23 480 451</a></p>
+              <p><strong>Facebook :</strong> <a href="https://facebook.com" target="_blank">facebook.com</a></p>
+              <div class="pill-row">
+                <span class="pill">Salle de gym</span>
+                <span class="pill">Cours collectifs</span>
+                <span class="pill">Self-défense</span>
+                <span class="pill">Kids bootcamp</span>
+              </div>
+            </div>
+            <div>
+              <h3>Horaires</h3>
+              <ul>
+                <li><span>Lundi–Vend</span><span>07h00–22h00</span></li>
+                <li><span>Samedi</span><span>07h00–17h00</span></li>
+                <li><span>Dimanche</span><span>Fermé</span></li>
+              </ul>
+              <p style="margin-top:0.4rem;">
+                <strong>Organisation des étages :</strong><br />
+                RDC réservé aux femmes · 1er étage hommes · 2e étage cours collectifs.
+              </p>
+            </div>
+          </div>
+          <div class="hero-card-footer">
+            <span>Mis à jour par l’entreprise il y a 3 semaines</span>
+            <a href="#contact">Envoyer vers un téléphone</a>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Présentation -->
+    <section id="presentation">
+      <h2><span>Présentation</span> de la salle</h2>
+      <p class="section-subtitle">
+        GYM MAX est une salle de sport récente à Ben Arous, pensée pour offrir une
+        expérience complète : musculation, cardio, cours collectifs, programmes kids
+        et accompagnement par des coachs qualifiés.
+      </p>
+      <section id="galerie">
+  <h2><span>Galerie</span> photos</h2>
+  <p class="section-subtitle">
+    Découvrez l’ambiance de GYM MAX, les espaces d’entraînement et les cours collectifs.
+  </p>
+
+  <div class="gallery-grid">
+    <img src="5.png" alt="Salle GYM MAX">
+  
+
+
+  <!-- Replace one photo with a video -->
+  <video class="gallery-video" controls>
+    <source src="video.mp4" type="video/mp4">
+  </video>
+
+    <video class="gallery-video" controls >
+    <source src="video2.mp4" type="video/mp4" >
+  </video>
+   
+    <video class="gallery-video" controls>
+    <source src="video4.mp4" type="video/mp4">
+  </video>
+
+  </div>
+</section>
+
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-header">
+            <h3>Pourquoi choisir GYM MAX ?</h3>
+            <span class="tag">Salle de gym moderne</span>
+          </div>
+          <p>
+            Que vous soyez débutant ou confirmé, GYM MAX vous propose un espace
+            lumineux et équipé, des machines récentes et une ambiance motivante.
+          </p>
+          <ul style="margin-top:0.6rem;font-size:0.9rem;color:var(--text-muted);list-style:disc;padding-left:1.1rem;">
+            <li>Zone musculation & cardio avec machines modernes</li>
+            <li>Cours collectifs pour hommes : TRX, HIIT, Mix boxing, self-défense</li>
+            <li>Programme spécial kids (5–12 ans) : fitness, bootcamp, Kung Fu sanda</li>
+            <li>Coachs expérimentés : Samir, Mahdi, Mouss, Aymen</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>Ambiance & organisation</h3>
+            <span class="tag">Confort & sécurité</span>
+          </div>
+          <p>
+            La salle est organisée pour garantir confort et sécurité à tous :
+            espaces séparés, cours encadrés, planning clair et adapté aux emplois du temps.
+          </p>
+          <div class="pill-row">
+            <span class="pill">RDC réservé aux femmes</span>
+            <span class="pill">1er étage hommes</span>
+            <span class="pill">2e étage cours collectifs</span>
+            <span class="pill">Vestiaires & douches</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Planning -->
+    <section id="planning">
+      <h2><span>Planning</span> des cours</h2>
+      <p class="section-subtitle">
+        Découvrez le planning des cours collectifs pour hommes et kids, ainsi que le
+        programme spécial enfants (5 à 12 ans). Les horaires peuvent être ajustés,
+        consultez régulièrement le planning affiché à la salle.
+      </p>
+
+      <div class="planning-grid">
+        <div class="card">
+          <div class="card-header">
+            <h3>Cours collectifs Homme / Kids</h3>
+            <span class="tag">Spécial Homme & Kids</span>
+          </div>
+          <table class="planning-table">
+            <thead>
+              <tr>
+                <th>Jour</th>
+                <th>Horaire</th>
+                <th>Cours</th>
+                <th>Catégorie</th>
+                <th>Coach</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="badge-day">Lundi</span></td>
+                <td>18h30 – 19h30</td>
+                <td>TRX Adult</td>
+                <td>Homme</td>
+                <td>Coach Samir</td>
+              </tr>
+              <tr>
+                <td><span class="badge-day">Mardi</span></td>
+                <td>20h00 – 21h30</td>
+                <td>Self-défense</td>
+                <td>Homme</td>
+                <td>Coach Mouss</td>
+              </tr>
+              <tr>
+                <td><span class="badge-day">Mercredi</span></td>
+                <td>16h00 – 17h15</td>
+                <td>Fitness Kids</td>
+                <td>Kids (6–12 ans)</td>
+                <td>Coach Samir</td>
+              </tr>
+              <tr>
+                <td><span class="badge-day">Mercredi</span></td>
+                <td>18h30 – 19h30</td>
+                <td>TBW HIIT</td>
+                <td>Homme</td>
+                <td>Coach Samir</td>
+              </tr>
+              <tr>
+                <td><span class="badge-day">Jeudi</span></td>
+                <td>20h00 – 21h30</td>
+                <td>Mix boxing</td>
+                <td>Homme</td>
+                <td>Coach Mouss</td>
+              </tr>
+              <tr>
+                <td><span class="badge-day">Vendredi</span></td>
+                <td>18h30 – 19h30</td>
+                <td>Culture physique</td>
+                <td>Kids</td>
+                <td>Coach Samir</td>
+              </tr>
+              <tr>
+                <td><span class="badge-day">Samedi</span></td>
+                <td>14h00 – 15h00</td>
+                <td>Kids bootcamp</td>
+                <td>Kids</td>
+                <td>Coach Samir</td>
+              </tr>
+              <tr>
+                <td><span class="badge-day">Samedi</span></td>
+                <td>15h00 – 16h30</td>
+                <td>Self-défense Kids</td>
+                <td>Kids</td>
+                <td>Coach Mouss</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>Planning spécial Kids (5–12 ans)</h3>
+            <span class="tag">Kids 5–12 ans</span>
+          </div>
+          <table class="planning-table">
+            <thead>
+              <tr>
+                <th>Jour</th>
+                <th>Horaire</th>
+                <th>Cours</th>
+                <th>Coach</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="badge-day">Mardi</span></td>
+                <td>17h30 – 18h30</td>
+                <td>Kung Fu sanda</td>
+                <td>Coach Mahdi</td>
+              </tr>
+              <tr>
+                <td><span class="badge-day">Mercredi</span></td>
+                <td>17h00 – 18h00</td>
+                <td>Fitness kids</td>
+                <td>Coach Samir</td>
+              </tr>
+              <tr>
+                <td><span class="badge-day">Jeudi</span></td>
+                <td>17h30 – 18h30</td>
+                <td>Kung Fu sanda</td>
+                <td>Coach Mahdi</td>
+              </tr>
+              <tr>
+                <td><span class="badge-day">Samedi</span></td>
+                <td>14h00 – 15h00</td>
+                <td>Kids bootcamp</td>
+                <td>Coach Samir</td>
+              </tr>
+              <tr>
+                <td><span class="badge-day">Samedi</span></td>
+                <td>15h00 – 16h30</td>
+                <td>Self-défense</td>
+                <td>Coach Aymen</td>
+              </tr>
+              <tr>
+                <td><span class="badge-day">Samedi</span></td>
+                <td>16h30 – 17h30</td>
+                <td>Kung Fu sanda</td>
+                <td>Coach Mahdi</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+    <section id="tarifs">
+  <h2><span>Nos Offres</span> & Abonnements</h2>
+  <p class="section-subtitle">
+    Choisissez la formule qui correspond à vos objectifs. Des offres flexibles pour tous les profils : étudiants, familles et passionnés.
+  </p>
+
+  <div class="pricing-grid">
+
+    <!-- Abonnement Prestige -->
+    <div class="pricing-card highlight">
+      <h3>Abonnement Prestige</h3>
+      <p class="price">100 DT</p>
+      <ul>
+        <li>Accès illimité à toutes les installations</li>
+        <li>Cours collectifs inclus</li>
+        <li>Coaching personnalisé</li>
+      </ul>
+    </div>
+
+    <!-- Abonnement Spécialité -->
+    <div class="pricing-card">
+      <h3>Abonnement Spécialité</h3>
+      <p class="price">50 DT</p>
+      <ul>
+        <li>3 séances par semaine pour progresser</li>
+        <li>Choisissez parmi Kung Fu, Gymnastique, Fitness</li>
+        <li>Encadrement par coachs experts</li>
+      </ul>
+    </div>
+
+    <!-- Abonnement Étudiant -->
+    <div class="pricing-card">
+      <h3>Abonnement Étudiant</h3>
+      <p class="price">65 DT</p>
+      <ul>
+        <li>Tarif réduit pour les étudiants</li>
+        <li>Accès à la salle de 8h à 17h</li>
+        <li>Ambiance motivante et encadrement adapté</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Offres Spéciales -->
+  <div class="special-offers">
+    <h3>Offres Spéciales</h3>
+
+    <div class="offer-box">
+      <h4>Offres Longue Durée</h4>
+      <ul>
+        <li>Trimestriel : <strong>85d/mois</strong> (–15%)</li>
+        <li>Semestriel : <strong>70d/mois</strong> (–30%)</li>
+        <li>Annuel : <strong>50d/mois</strong> (–50%)</li>
+      </ul>
+    </div>
+
+    <div class="offer-box">
+      <h4>Offres Famille (2 personnes ou plus)</h4>
+      <ul>
+        <li>Mensuel : <strong>80d/mois</strong> par personne</li>
+        <li>Trimestriel : <strong>65d/mois</strong></li>
+        <li>Annuel : <strong>40d/mois</strong></li>
+      </ul>
+    </div>
+
+    <div class="offer-box">
+      <h4>Offres Étudiants</h4>
+      <ul>
+        <li>Accès à la salle de 8h à 17h</li>
+        <li>Prix mensuel spécial : <strong>65 DT</strong></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+    <!-- Avis -->
+    <section id="avis">
+      <h2><span>Avis</span> des clients</h2>
+      <p class="section-subtitle">
+        GYM MAX affiche une note de <strong>5,0 / 5</strong> sur Google avec des avis
+        qui mettent en avant l’ambiance, la qualité des coachs et la modernité de la salle.
+      </p>
+
+      <div class="reviews">
+        <div>
+          <div class="review-card">
+            <div class="review-header">
+              <span>GSM ARENA · 1 avis</span>
+              <span class="stars">★★★★★</span>
+            </div>
+            <div class="review-body">
+              <p>« 👌👌 … »</p>
+            </div>
+            <div class="review-meta">
+              il y a un mois · J’aime
+            </div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-header">
+              <span>Mansour Hamdi · 1 avis</span>
+              <span class="stars">★★★★★</span>
+            </div>
+            <div class="review-body">
+              <p>« 🔥🔥 … »</p>
+            </div>
+            <div class="review-meta">
+              il y a 2 mois · J’aime
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>Rédiger un avis</h3>
+            <span class="tag">Votre expérience compte</span>
+          </div>
+          <p>
+            Vous avez testé GYM MAX ? Partagez votre avis sur Google pour aider
+            d’autres personnes à découvrir la salle et à choisir le programme qui
+            leur convient.
+          </p>
+          <button class="btn-primary" style="margin-top:0.8rem;">
+            Rédiger un avis Google
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2><span>Contact</span> & accès</h2>
+      <p class="section-subtitle">
+        Pour toute question sur les abonnements, les cours collectifs ou le planning,
+        contactez directement la salle ou passez sur place à Ben Arous.
+      </p>
+
+      <div class="contact-grid">
+        <div class="card">
+          <div class="card-header">
+            <h3>Coordonnées</h3>
+            <span class="tag">Ben Arous</span>
+          </div>
+          <ul class="contact-list">
+            <li>
+              <span class="label">Adresse</span>
+              <span>Rue Naceur Bey, Ben Arous, Tunisie</span>
+            </li>
+            <li>
+              <span class="label">Téléphone</span>
+              <span><a href="tel:+21623480451">23 480 451</a></span>
+            </li>
+            <li>
+              <span class="label">Facebook</span>
+              <span><a href="https://facebook.com" target="_blank">facebook.com</a></span>
+            </li>
+            <li>
+              <span class="label">Horaires</span>
+              <span>Lun–Ven 07h00–22h00 · Sam 07h00–17h00 · Dim fermé</span>
+            </li>
+          </ul>
+
+          <p style="margin-top:0.8rem;font-size:0.9rem;color:var(--text-muted);">
+            Pour recevoir le lien de la page ou l’envoyer vers un téléphone,
+            demandez à l’accueil ou scannez le QR code affiché dans la salle.
+          </p>
+        </div>
+
+        <div class="map-placeholder">
+          <strong>Localisation</strong>
+          <span>Rue Naceur Bey, Ben Arous · Code plus : P6XC+C5 Ben Arous</span>
+          <span>À proximité de commerces et services du quartier.</span>
+          <span style="margin-top:0.4rem;">
+            <iframe 
+  class="map-iframe"
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3196.9121792230594!2d10.220685500000002!3d36.748678999999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12fd37006213a049%3A0x282503a4369a9e6d!2sGYM%20MAX!5e0!3m2!1sfr!2stn!4v1782521830357!5m2!1sfr!2stn"
+  allowfullscreen=""
+  loading="lazy">
+</iframe>
+
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>© GYM MAX · Ben Arous · Salle de gym & cours collectifs.</span>
+      <span>Site vitrine proposé en démonstration.</span>
+    </footer>
+  </main>
+
+  <script>
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      window.scrollTo({
+        top: el.offsetTop - 80,
+        behavior: "smooth"
+      });
+    }
+
+    // Petit effet sur les liens de navigation
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      link.addEventListener("click", e => {
+        e.preventDefault();
+        const href = link.getAttribute("href");
+        if (href && href.startsWith("#")) {
+          scrollToSection(href.substring(1));
+        }
+      });
+    });
+  </script>
+</body>
+</html>
